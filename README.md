@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
  Consejo Financiero
 
 Consejo Financiero es una aplicación web diseñada para ayudar a los usuarios a controlar sus finanzas personales, administrar sus ingresos y gastos, y llevar un seguimiento claro de sus finanzas.
@@ -23,6 +24,8 @@ Base de datos con MySQL
 5. Estado financiero en tiempo real.
 
 =======
+=======
+>>>>>>> 1cea697a97617fe0b00dd25b6d44d923d7dddb60
 Consejo Financiero
 
 Consejo Financiero es una aplicación web diseñada para ayudar a los usuarios a controlar sus finanzas personales, administrar sus ingresos y gastos, y llevar un seguimiento claro de su estado financiera.
@@ -45,6 +48,9 @@ Base de datos  MySQL
  Categorías de gastos (alimentación, transporte, ocio, etc.).
  Reportes y visualización de movimientos.
  Estado financiero en tiempo real.
+<<<<<<< HEAD
+>>>>>>> 1cea697a97617fe0b00dd25b6d44d923d7dddb60
+=======
 >>>>>>> 1cea697a97617fe0b00dd25b6d44d923d7dddb60
 
 
@@ -66,7 +72,11 @@ Sprint Web
 Maven
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 MySQL 
+=======
+MySQL
+>>>>>>> 1cea697a97617fe0b00dd25b6d44d923d7dddb60
 =======
 MySQL
 >>>>>>> 1cea697a97617fe0b00dd25b6d44d923d7dddb60
@@ -79,6 +89,10 @@ React 18
 
 TypeScript
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1cea697a97617fe0b00dd25b6d44d923d7dddb60
 =======
 
 >>>>>>> 1cea697a97617fe0b00dd25b6d44d923d7dddb60
