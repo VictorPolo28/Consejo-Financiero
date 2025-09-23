@@ -11,15 +11,30 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3001") // permite ese origen
 @RequestMapping("/api/users")
 public class UsersController {
 
     @Autowired
     private UsersService usersService;
 
+    @PostMapping("/login")
+    public ResponseEntity<?> loginUser(@RequestBody Map<String, String> loginData) {
+        String email = loginData.get("email");
+        String password = loginData.get("password");
+
+        Optional<Users> user = usersService.searchByEmail(email);
+
+        if (user.isPresent() && user.get().getPassword().equals(password)) {
+            return ResponseEntity.ok(user.get());
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid email or password");
+        }
+    }
 
     @PostMapping("/register")
     public ResponseEntity<Users> registerUser(@RequestBody Users users) {

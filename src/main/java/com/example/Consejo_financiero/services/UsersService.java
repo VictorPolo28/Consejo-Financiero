@@ -20,5 +20,6 @@ public interface UsersService {
     Users changeUserStatus(Long idUser, UsersStatus newUserStatus);
     Users registerUser(Users user);
 
+
     List<Users> getByStatus(UsersStatus usersStatus);
 }

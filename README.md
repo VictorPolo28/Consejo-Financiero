@@ -1,25 +1,26 @@
-Consejo Financiero
 
-Consejo Financiero es una aplicación web diseñada para ayudar a los usuarios a controlar sus finanzas personales, administrar sus ingresos y gastos, y llevar un seguimiento claro de su estado financiera.
+ Consejo Financiero
+
+Consejo Financiero es una aplicación web diseñada para ayudar a los usuarios a controlar sus finanzas personales, administrar sus ingresos y gastos, y llevar un seguimiento claro de sus finanzas.
 
 El proyecto está desarrollado con:
 
-Backend Spring Boot
+Backend con Spring Boot
  (API RESTful, Java 21).
 
-Frontend React
+Frontend con  React
  con Next.js
 .
 
-Base de datos  MySQL
+Base de datos con MySQL
 
  Funcionalidades principales
 
- Registro y autenticación de usuarios.
- Administración de ingresos y gastos.
- Categorías de gastos (alimentación, transporte, ocio, etc.).
- Reportes y visualización de movimientos.
- Estado financiero en tiempo real.
+1. Registro y autenticación de usuarios.
+2.Administración de ingresos y gastos.
+3. Categorías de gastos (alimentación, transporte, ocio, etc.).
+4. Reportes y visualización de movimientos.
+5. Estado financiero en tiempo real.
 
 
 Tecnologías utilizadas
@@ -39,7 +40,8 @@ Sprint Web
 
 Maven
 
-MySQL
+MySQL 
+
 
 Frontend
 
