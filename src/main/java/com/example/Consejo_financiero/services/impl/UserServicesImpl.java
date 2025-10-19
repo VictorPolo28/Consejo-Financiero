@@ -14,6 +14,8 @@ import java.util.Optional;
 @Service
 public class UserServicesImpl implements UsersService {
 
+
+
     @Autowired
     private UsuerRepository userRepository;
 
@@ -24,12 +26,13 @@ public class UserServicesImpl implements UsersService {
 
     @Override
     public List<Users> getByStatus(UsersStatus usersStatus) {
-        return userRepository.findByUserStatus(usersStatus);
+        return List.of();
     }
 
+
     @Override
-    public Optional<Users> searchById(Long idUser) {
-        return userRepository.findById(idUser);
+    public Optional<Users> searchById(Long userId) {
+        return userRepository.findById(userId);
     }
 
     @Override
@@ -43,34 +46,17 @@ public class UserServicesImpl implements UsersService {
     }
 
     @Override
-    public Optional<Users> searchByPhone(String phone) {
-        return userRepository.findByPhone(phone);
-    }
-
-
-    @Override
-    @SneakyThrows
-    public Users updateUserInformation(Long idUser, Users user) {
-       Users userExist = userRepository.findById(idUser)
-               .orElseThrow(()->new Exception("El usuario  con ID: " +idUser+" No fue encontrado"));
-
-       userExist.setName(user.getName());
-       userExist.setSurname(user.getSurname());
-       userExist.setEmail(user.getEmail());
-       userExist.setPhone(user.getPhone());
-       userExist.setPassword(user.getPassword());
-
-       return userRepository.save(userExist);
+    public Users updateUserInformation(Long userId, Users user) {
+        return null;
     }
 
     @Override
-    @SneakyThrows
-    public Users changeUserStatus(Long idUser, UsersStatus newUserStatus) {
-        Users userExist = userRepository.findById(idUser)
-                .orElseThrow(()->new Exception("El usuario  con ID: " +idUser+" No fue encontrado"));
-        userExist.setUserStatus(newUserStatus);
-        return userRepository.save(userExist);
+    public Users changeUserStatus(Long userId, UsersStatus newUserStatus) {
+        return null;
     }
 
 
 }
+
+
+

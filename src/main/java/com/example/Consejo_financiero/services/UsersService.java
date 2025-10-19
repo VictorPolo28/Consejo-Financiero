@@ -11,13 +11,12 @@ public interface UsersService {
 
 
 
-    Optional<Users> searchById(Long idUser);
+    Optional<Users> searchById(Long userId);
     Optional<Users> searchByNameUser(String userName);
     Optional<Users> searchByEmail(String userEmail);
-    Optional<Users> searchByPhone(String phone);
 
-    Users updateUserInformation(Long idUser, Users user);
-    Users changeUserStatus(Long idUser, UsersStatus newUserStatus);
+    Users updateUserInformation(Long userId, Users user);
+    Users changeUserStatus(Long userId, UsersStatus newUserStatus);
     Users registerUser(Users user);
 
 

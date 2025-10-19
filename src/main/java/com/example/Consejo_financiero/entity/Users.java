@@ -1,6 +1,7 @@
 package com.example.Consejo_financiero.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,6 +9,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Data
@@ -38,6 +40,10 @@ public class Users {
     @Column(name="age", nullable = false)
     private int age;
 
+    @Column(name = "balance minimo")
+    private Double balanceMinimoAlerta = 1000.0; // Valor por defecto
+
+
     @Column(name="singDate", updatable = false)
     @CreationTimestamp
     private LocalDateTime date;
@@ -45,4 +51,9 @@ public class Users {
     @Enumerated(EnumType.STRING)
     @Column(name="status")
     private UsersStatus userStatus;
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    private List<Categories> categorias;
+
 }

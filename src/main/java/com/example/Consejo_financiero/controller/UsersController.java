@@ -3,6 +3,7 @@ package com.example.Consejo_financiero.controller;
 
 import com.example.Consejo_financiero.entity.Users;
 import com.example.Consejo_financiero.entity.UsersStatus;
+import com.example.Consejo_financiero.repository.UsuerRepository;
 import com.example.Consejo_financiero.services.UsersService;
 import org.hibernate.sql.Update;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,17 +11,21 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3001") // permite ese origen
+@CrossOrigin(origins = "http://localhost:3000") // permite ese origen
 @RequestMapping("/api/users")
 public class UsersController {
 
     @Autowired
     private UsersService usersService;
+
+    @Autowired
+    private UsuerRepository usuarioRepository;
 
     @PostMapping("/login")
     public ResponseEntity<?> loginUser(@RequestBody Map<String, String> loginData) {
@@ -86,5 +91,44 @@ public class UsersController {
     public ResponseEntity<List<Users>> productListByStatus(@PathVariable UsersStatus usersStatus){
         List<Users> users = usersService.getByStatus(usersStatus);
         return ResponseEntity.ok(users);
+    }
+
+    @PutMapping("/{userId}/balance-minimo")
+    public  ResponseEntity<?>actualizarBalanceMinimo(
+            @PathVariable Long userId,
+            @RequestBody Map<String, Double> request){
+        try{
+            Double balanceMinimo = request.get("balanceMinimo");
+
+            if (balanceMinimo == null){
+                return ResponseEntity.badRequest().body("Balance minimo es requerido");
+            }
+
+            Users usuario = usuarioRepository.findById(userId)
+                    .orElseThrow(()-> new RuntimeException("usuario no encontrado"));
+
+            usuario.setBalanceMinimoAlerta(balanceMinimo);
+            usuarioRepository.save(usuario);
+
+            return ResponseEntity.ok(usuario);
+        }catch (Exception e){
+            return ResponseEntity.status(500).body("Error: " + e.getMessage());
+        }
+    }
+
+    //Endpoint para obtener el balanace  minimo
+    @GetMapping("/{userId}/balance-minimo")
+    public ResponseEntity<?> obtenerBalanceMinimo(@PathVariable Long userId){
+        try{
+            Users usuario = usuarioRepository.findById(userId)
+                    .orElseThrow(()->new RuntimeException("Usuario no encontrado"));
+
+            Map<String, Double> response = new HashMap<>();
+            response.put("BalanaceMinimo", usuario.getBalanceMinimoAlerta());
+
+            return ResponseEntity.ok(response);
+        }catch (Exception e){
+            return ResponseEntity.status(500).body("Error: " + e.getMessage());
+        }
     }
 }
