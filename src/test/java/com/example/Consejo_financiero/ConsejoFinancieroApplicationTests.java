@@ -1,12 +1,13 @@
 package com.example.Consejo_financiero;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootApplication
-public class ConsejoFinancieroApplication {
+@SpringBootTest
+class ConsejoFinancieroApplicationTests {
 
-    public static void main(String[] args) {
-        SpringApplication.run(ConsejoFinancieroApplication.class, args);
-    }
+	@Test
+	void contextLoads() {
+	}
+
 }
